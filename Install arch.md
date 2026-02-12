@@ -1,3 +1,5 @@
+# jika sudah masuk kedalam install arch linux nya langsung ikutin langkah dibawah
+
 ```
 iwctl
 device list (buat cek wifi setiap laptop)

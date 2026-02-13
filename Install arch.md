@@ -184,7 +184,7 @@ echo "user ALL(ALL:ALL) ALL" /etc/sudoers.d/00-user
 
 ### menambahkan user kedalam grup root
 ```
-usermode -aG wheel [user]
+usermod -aG wheel [user]
 ```
 
 ### membuat cmdline

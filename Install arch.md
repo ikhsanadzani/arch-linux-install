@@ -156,6 +156,13 @@ locale-gen
 locale > /etc/locale.conf
 ```
 
+### config locale
+```
+nvim /etc/locale.cond
+```
+
+
+
 ### config file locale 
 ```
 isi lang=C menjadi lang=en_US.UTF-8

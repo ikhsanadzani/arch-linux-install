@@ -5,7 +5,7 @@ iwctl
 device list (buat cek wifi setiap laptop)
 
 ```
-
+`lsblk -o name,vstype` jika ingine melihat tipe partisi nya
 `lsblk` untuk melihat partisi nya
 ```
 cfdisk /dev/[partisi] (untuk membentuk layout yg mah di install)

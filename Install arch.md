@@ -179,7 +179,7 @@ passwd [user]
 ### menambah hak sudo
 
 ```
-echo "user ALL(ALL:ALL) ALL" /etc/sudoers.d/00-user
+echo 'nama_user ALL=(ALL:ALL) ALL' >> /etc/sudoers.d/none
 ```
 
 ### menambahkan user kedalam grup root

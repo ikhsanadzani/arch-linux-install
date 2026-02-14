@@ -230,12 +230,12 @@ mkdir efi/linux
 ### memindahkan intel ucode dan vmlinuz ke kernel
 
 ```
-mv [cari kedua file itu]
+mv intel/amd-ucode vmlinuz-linux kernel/
 ```
 
 ```
 ls kernel/
-rm -rf intitrams-linux.img
+rm -rf intitrams-*
 ```
 
 ### memindahkan file mkinitcpio

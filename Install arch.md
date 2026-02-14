@@ -248,8 +248,8 @@ mv /etc/mkinitcpio.conf /etc/mkinitcpio.d/default.conf
 ```
 nvim /etc/mkinitcpio.d/linux.preset
 ```
+![WhatsApp Image 2026-02-14 at 02 31 35](https://github.com/user-attachments/assets/6a029af1-849c-4e76-8b57-edd63d9e5176)
 
-![[20260212_202251.jpg]]
 
 ### lalu install bootmanager
 ```

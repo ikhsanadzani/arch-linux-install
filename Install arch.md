@@ -230,7 +230,8 @@ mkdir efi/linux
 ### memindahkan intel ucode dan vmlinuz ke kernel
 
 ```
-mv intel/amd-ucode vmlinuz-linux kernel/
+mv /boot/intel/amd-ucode kernel/
+mv /boot/vmlinuz-linux kernel/
 ```
 
 ```

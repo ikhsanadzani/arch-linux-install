@@ -5,8 +5,8 @@
 ```
 iwctl
 device list (buat cek wifi setiap laptop)
-
 ```
+****
 
 # CHECKING PARTISI
 `lsblk -o name,vstype` jika ingine melihat tipe partisi nya
@@ -16,13 +16,13 @@ device list (buat cek wifi setiap laptop)
 ```
 cfdisk /dev/[partisi] (untuk membentuk layout yg mah di install)
 ```
+
 ### MINIMAL PARTISI 
 #### **MENYESUAIKAN DENGAN PENYIMPANAN YANG ADA**
 ```
 boot = 4G [EFI system]
 root = 20G [linux filesystem]
 home = 100G [linux filesystem/linux server data]
-
 ```
 
 #### kalo salah satu partisi PENTING ke hapus, langsung QUIT aja jangan di WRITE
@@ -30,6 +30,7 @@ home = 100G [linux filesystem/linux server data]
 ```
 lsblk (lagi)
 ```
+****
 
 # FORMATING
 
@@ -42,13 +43,11 @@ mkfs.vfat -F32 -S 4096 -n BOOT /dev/[partisi boot]
 ```
 mkfs.ext4 -b 4096 /dev/[partisi root]
 ```
-
-
 ## HOME
 ```
 mkfs.ext4 -b 4096 /dev/[partisi home]
 ```
-
+****
 
 # MOUNTING
 
@@ -74,6 +73,7 @@ mkdir -p /mnt/home
 ```
 mount /dev/[partisi home] /mnt/home
 ```
+****
 
 ### INSTALL LINUX CORE
 ## INTEL
@@ -85,6 +85,7 @@ pacstrap /mnt intel-ucode base base-devel linux linux-firmware iwd git neovim
 ```
 pacstrap /mnt amd-ucode base base-devel linux linux-firmware iwd git neovim
 ```
+****
 
 ### menyimpan file yg udah di format dan di mounting
 

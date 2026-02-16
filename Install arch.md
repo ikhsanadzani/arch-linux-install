@@ -194,18 +194,20 @@ touch /etc/cmdline.d/{01-boot.conf,02-mods.conf,03-secs.conf,04-perf.conf,05-net
 ```
 
 ## CONFIG KERNEL PARAMETER
+
+01-boot.conf
 ```
 nvim /etc/cmdline.d/01-misc
 ```
-### ISI DENGAN
+#### ISI DENGAN
 ```
 root=/dev/[partisi root]
 ```
-
+### 06-misc.conf
 ```
 nvim /etc/cmdline.d/06-boot
 ```
-### ISI DENGAN
+#### ISI DENGAN
 ```
 rw quiet
 ```

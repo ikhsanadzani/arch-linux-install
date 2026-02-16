@@ -87,74 +87,73 @@ pacstrap /mnt amd-ucode base base-devel linux linux-firmware iwd git neovim
 ```
 ****
 
-### menyimpan file yg udah di format dan di mounting
+# FSTAB
 
 ```
 genfstab -U /mnt > /mnt/etc/fstab
 ```
 
-### membuat folder config iwd
+# WIFI 
 ```
 mkdir -p /mnt/var/lib/iwd
 ```
 
-### terus copy file nya config wifi
 ```
 cp /var/lib/iwd/*.psk /mnt/var/lib/iwd/
 ```
+****
 
-### terus copy file config network
+### NETWORK
 ```
 cp /etc/systemd/network/* /mnt/etc/systemd/network
 ```
+****
 
-## lalu masuk ke mode root
+## ARCH-CHROOT
 ```
 arch-chroot /mnt
 ```
 
-## lalu install desktop environment
-### gnome
+## DESKTOP ENVIRONMENT
+### GNOME
 ```
 pacman -S gnome gdm networkmanager pipewire pipewire-pulse pipewire-jack
 ```
-### plasma
+### PLASMA
 ```
 pacman -S plasma sddm networkmanager pipewire pipewire-pulse pipewire-jack kitty
 ```
 
 langsung enter aja semua
+****
+# USER KOMPUTER
 
-### membuat nama komputer 
-
-jika 1 kata tidak perlu pake `""` kalo lebih menggunakan petik 2
+## jika 1 kata tidak perlu pake `""` kalo lebih menggunakan petik 2
 ```
 echo [nama komputer] > /etc/hostname
 ```
 
-### mengatur waktu 
+LOCALTIME
 ```
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 ```
-
-### generate waktu 
 ```
 hwclock --systohc
 ```
-
-### config bahasa
+****
+# LOCALE
 
 ```
 nvim /etc/locale.gen
 ```
 
-lalu pencarian di nvim menggunakan `/`
+## lalu pencarian di nvim menggunakan `/`
 
 ```
 lalu uncommenting kedua en_US
 ```
 
-#### generate bahasa yg di uncommenting 
+### generate bahasa yg di uncommenting 
 ```
 locale-gen
 ```
@@ -167,98 +166,80 @@ locale > /etc/locale.conf
 ```
 nvim /etc/locale.cond
 ```
-
-
-
 ### config file locale 
 ```
 isi lang=C menjadi lang=en_US.UTF-8
 dan isi ALL=en_US.UTF-8
 ```
-
-### membuat user dan pw nya
-
+****
+# USERADD
 ```
 useradd -m [user]
 passwd [user]
 ```
-
-### menambah hak sudo
-
 ```
 echo 'nama_user ALL=(ALL:ALL) ALL' >> /etc/sudoers.d/none
 ```
-
-### menambahkan user kedalam grup root
 ```
 usermod -aG wheel [user]
 ```
+****
 
-### membuat cmdline
+# KERNEL PARAMETER
 ```
 mkdir /etc/cmdline.d
 ```
-
-### kernel parameter
 ```
 touch /etc/cmdline.d/{01-boot.conf,02-mods.conf,03-secs.conf,04-perf.conf,05-nets.conf,06-misc.conf}
 ```
 
-### lalu config 01-boot
-
+## CONFIG KERNEL PARAMETER
 ```
 nvim /etc/cmdline.d/01-misc
 ```
-
+### ISI DENGAN
 ```
 root=/dev/[partisi root]
 ```
 
-
-### lalu config 06-misc
 ```
 nvim /etc/cmdline.d/06-boot
 ```
-
+### ISI DENGAN
 ```
-rw
+rw quiet
 ```
-
-### membuat folder kernel dan efi
+****
+### PREPARE BOOT
+```
+cd boot/
+```
 ```
 mkdir kernel efi
 ```
-
-### membuart file linux di efi
 ```
 mkdir efi/linux
 ```
-
-### memindahkan intel ucode dan vmlinuz ke kernel
-
 ```
 mv /boot/intel/amd-ucode kernel/
 mv /boot/vmlinuz-linux kernel/
 ```
-
 ```
 ls kernel/
 rm -rf intitrams-*
 ```
-
-### memindahkan file mkinitcpio
+****
+# MKINITCPIO
 ```
 mv /etc/mkinitcpio.conf /etc/mkinitcpio.d/default.conf
 ```
-
-## config mkinit
 ```
 nvim /etc/mkinitcpio.d/linux.preset
 ```
 ![WhatsApp Image 2026-02-14 at 02 31 35](https://github.com/user-attachments/assets/6a029af1-849c-4e76-8b57-edd63d9e5176)
 
-
-### lalu install bootmanager
+****
+### BOOTCTL
 ```
 bootctl --path=/boot install
 ```
@@ -266,15 +247,17 @@ bootctl --path=/boot install
 ```
 touch /etc/vconsole.conf
 ```
+****
 
 
-### generate UKI
+### GENERATE UKI
 
 ```
 mkinitcpio -P
 ```
+****
 
-## enable service
+## SERVICE
 ```
 systemctl enable systemd-networkd.socket
 ```
@@ -294,8 +277,8 @@ systemctl enable iwd
 ```
 systemctl enable NetworkManager
 ```
-
-### unmount /mnt
+****
+# UNMOUNT
 
 ```
 umount -R /mnt

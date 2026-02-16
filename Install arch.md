@@ -128,7 +128,7 @@ langsung enter aja semua
 ****
 # USER KOMPUTER
 
-## jika 1 kata tidak perlu pake `""` kalo lebih menggunakan petik 2
+## jika 1 kata tidak perlu pake `""` kalo lebih menggunakan petik `""`
 ```
 echo [nama komputer] > /etc/hostname
 ```

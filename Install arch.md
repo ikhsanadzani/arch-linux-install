@@ -33,18 +33,18 @@ lsblk (lagi)
 
 # FORMATING
 
-## FORMAT BOOT
+## BOOT
 ```
 mkfs.vfat -F32 -S 4096 -n BOOT /dev/[partisi boot]
 ```
 
-## FORMAT ROOT
+## ROOT
 ```
 mkfs.ext4 -b 4096 /dev/[partisi root]
 ```
 
 
-## FORMAT HOME
+## HOME
 ```
 mkfs.ext4 -b 4096 /dev/[partisi home]
 ```

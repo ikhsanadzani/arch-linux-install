@@ -200,7 +200,7 @@ touch /etc/cmdline.d/{01-boot.conf,02-mods.conf,03-secs.conf,04-perf.conf,05-net
 ### lalu config 01-boot
 
 ```
-nvim /etc/cmdline.d/01-boot
+nvim /etc/cmdline.d/01-misc
 ```
 
 ```

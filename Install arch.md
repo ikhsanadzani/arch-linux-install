@@ -1,16 +1,23 @@
 # jika sudah masuk kedalam install arch linux nya langsung ikutin langkah dibawah
 
+
+# CONNECT WIFI
 ```
 iwctl
 device list (buat cek wifi setiap laptop)
 
 ```
+
+# CHECKING PARTISI
 `lsblk -o name,vstype` jika ingine melihat tipe partisi nya
 `lsblk` untuk melihat partisi nya
+
+## MEMBAGI PARTISI
 ```
 cfdisk /dev/[partisi] (untuk membentuk layout yg mah di install)
 ```
-
+### MINIMAL PARTISI 
+#### **MENYESUAIKAN DENGAN PENYIMPANAN YANG ADA**
 ```
 boot = 4G [EFI system]
 root = 20G [linux filesystem]
@@ -18,64 +25,63 @@ home = 100G [linux filesystem/linux server data]
 
 ```
 
-#### kalo salah satu partisi ke hapus, langsung quit aja jangan di write itu pasti balik lagi
+#### kalo salah satu partisi PENTING ke hapus, langsung QUIT aja jangan di WRITE
 
 ```
 lsblk (lagi)
 ```
 
-## format boot
+# FORMATING
+
+## FORMAT BOOT
 ```
 mkfs.vfat -F32 -S 4096 -n BOOT /dev/[partisi boot]
 ```
 
-## format root
+## FORMAT ROOT
 ```
 mkfs.ext4 -b 4096 /dev/[partisi root]
 ```
 
 
-## format home
-
+## FORMAT HOME
 ```
 mkfs.ext4 -b 4096 /dev/[partisi home]
 ```
 
 
-### mounting root
+# MOUNTING
+
+## MOUNTING ROOT
 ```
 mount /dev/[pertisi root] /mnt
 ```
 
-### lalu membuat folder boot
+## MOUNTING BOOT
 
 ```
 mkdir -p /mnt/boot
 ```
 
-### mount partisi boot
 ```
 mount -o uid=0,gid=0,fmask=0077,dmask=0077 /dev/[partisi boot] /mnt/boot
 ```
 
-### membuat folder home 
+## MOUNTING HOME
 ```
 mkdir -p /mnt/home
 ```
-
-### mounting folder home
 ```
 mount /dev/[partisi home] /mnt/home
 ```
 
-### install packages 
-
-## intel
+### INSTALL LINUX CORE
+## INTEL
 ```
 pacstrap /mnt intel-ucode base base-devel linux linux-firmware iwd git neovim 
 ```
 
-## amd
+## AMD
 ```
 pacstrap /mnt amd-ucode base base-devel linux linux-firmware iwd git neovim
 ```

@@ -133,7 +133,7 @@ langsung enter aja semua
 echo [nama komputer] > /etc/hostname
 ```
 
-LOCALTIME
+# LOCALTIME
 ```
 ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
 ```
@@ -195,7 +195,7 @@ touch /etc/cmdline.d/{01-boot.conf,02-mods.conf,03-secs.conf,04-perf.conf,05-net
 
 ## CONFIG KERNEL PARAMETER
 
-01-boot.conf
+### 01-boot.conf
 ```
 nvim /etc/cmdline.d/01-misc
 ```

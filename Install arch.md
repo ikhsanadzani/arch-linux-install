@@ -230,7 +230,7 @@ mv /boot/vmlinuz-linux kernel/
 ```
 ```
 ls kernel/
-rm -rf intitramfs-*
+rm -rf initramfs-*
 ```
 ****
 # MKINITCPIO

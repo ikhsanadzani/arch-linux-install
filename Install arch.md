@@ -9,7 +9,7 @@ device list (buat cek wifi setiap laptop)
 ****
 
 # CHECKING PARTISI
-`lsblk -o name,vstype` jika ingine melihat tipe partisi nya
+`lsblk -o name,fstype,size` jika ingin melihat tipe partisi nya
 `lsblk` untuk melihat partisi nya
 
 ## MEMBAGI PARTISI

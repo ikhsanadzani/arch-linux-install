@@ -166,7 +166,7 @@ locale > /etc/locale.conf
 
 ### config locale
 ```
-nvim /etc/locale.cond
+nvim /etc/locale.conf
 ```
 ### config file locale 
 ```

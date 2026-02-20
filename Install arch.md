@@ -4,6 +4,7 @@
 # CONNECT WIFI
 ```
 iwctl
+station wlan0 connect "{nama wifi}"
 device list (buat cek wifi setiap laptop)
 ```
 ****

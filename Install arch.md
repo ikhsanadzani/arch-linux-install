@@ -197,7 +197,7 @@ touch /etc/cmdline.d/{01-boot.conf,02-mods.conf,03-secs.conf,04-perf.conf,05-net
 
 ### 01-boot.conf
 ```
-nvim /etc/cmdline.d/01-misc
+nvim /etc/cmdline.d/01-boot.conf
 ```
 #### ISI DENGAN
 ```
@@ -205,7 +205,7 @@ root=/dev/[partisi root]
 ```
 ### 06-misc.conf
 ```
-nvim /etc/cmdline.d/06-boot
+nvim /etc/cmdline.d/06-misc.conf
 ```
 #### ISI DENGAN
 ```
@@ -228,7 +228,7 @@ mv /boot/vmlinuz-linux kernel/
 ```
 ```
 ls kernel/
-rm -rf intitrams-*
+rm -rf intitramfs-*
 ```
 ****
 # MKINITCPIO

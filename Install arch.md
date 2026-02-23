@@ -11,8 +11,14 @@ station {device wifi} connect "{nama wifi}"
 ****
 
 # CHECKING PARTISI
-`lsblk -o name,fstype,size` jika ingin melihat tipe partisi nya
-`lsblk` untuk melihat partisi nya
+## jika ingin melihat partisi beserta type nya
+```
+lsblk -o name,fstype,size 
+```
+## Jika ingin melihat partisinya saja
+```
+lsblk
+```
 
 ## MEMBAGI PARTISI
 ```

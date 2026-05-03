@@ -230,8 +230,16 @@ mkdir kernel efi
 ```
 mkdir efi/linux
 ```
+#### Jika intel
 ```
-mv /boot/intel/amd-ucode kernel/
+mv /boot/intel-ucode kernel/
+```
+#### Jika amd
+```
+mv /boot/amd-ucode kernel/
+```
+----
+```
 mv /boot/vmlinuz-linux kernel/
 ```
 ```

@@ -20,7 +20,7 @@ firewall-cmd --reload
 
 # Install K3s using the official script
 ```bash
-curl -sfL https://get.k3s.io | sudo sh -
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --flannel-backend none --token 12345
 ```
 
 # Enable and start K3s

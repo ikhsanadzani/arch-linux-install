@@ -15,3 +15,17 @@ sudo systemctl start k3s
 ```
 sudo systemctl status k3s
 ```
+
+# Set up kubectl access
+```
+mkdir -p ~/.kube
+```
+```
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+```
+```
+sudo chown $(id -u):$(id -g) ~/.kube/config
+```
+```
+export KUBECONFIG=~/.kube/config
+```

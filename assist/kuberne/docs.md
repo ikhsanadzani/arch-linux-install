@@ -1,54 +1,68 @@
-# Firewalld
-> It is recommended to turn off firewalld:
+# langkah awalnya 
+## mengsinkronkan waktu
 ```
-systemctl disable firewalld --now
+sudo timedatectl set-ntp true
 ```
-> If you wish to keep firewalld enabled, by default, the following rules are required:
+> mengaktifkan sinkronisasi waktu otomatis
 ```
-firewall-cmd --permanent --add-port=6443/tcp #apiserver
+sudo timedatectl set-timezone Asia/Jakarta
+```
+> mengubah zona waktu (timezone) sistem Anda ke Waktu Indonesia Barat (WIB
+```
+sudo timedatectl
+```
+> cek statusnya
+
+## region control
+lewat admin kita ssh region control untuk dijadikan control-plane
+```
+curl -sfL https://get.k3s.io | sh -s server --disable traefik
+```
+> langsung install dari script resminya
+
+```
+sudo cat /var/lib/rancher/k3s/server/node-token 
+```
+> untuk cek token yang akan digunakan
+> contoh output:
+```
+K1038fb91da987e64ac1d98b948bc00520b51f8ef4f1dca73ea14a2391a4c1fb76c::server:e08f645e38888f1dfab0766a250aceee
+```
+
+## region data 
+> harus dari laptop admin di region control
+```
+curl -sfL https://get.k3s.io | K3S_URL="https://ip_server:6443" K3S_TOKEN="PASTE_TOKEN_DARI_SERVER" sh -s - agent 
 ```
 ```
-firewall-cmd --permanent --zone=trusted --add-source=10.42.0.0/16 #pods
+sudo kubectl label node [hostname_server] role=[rolenya]
+```
+
+## region internal 
+> harus dari laptop admin di region control
+```
+curl -sfL https://get.k3s.io | K3S_URL="https://ip_server:6443" K3S_TOKEN="PASTE_TOKEN_DARI_SERVER" sh -s - agent 
 ```
 ```
-firewall-cmd --permanent --zone=trusted --add-source=10.43.0.0/16 #services
+sudo kubectl label node [hostname_server] role=[rolenya]
+```
+
+## region public 
+> harus dari laptop admin di region control
+```
+curl -sfL https://get.k3s.io | K3S_URL="https://ip_server:6443" K3S_TOKEN="PASTE_TOKEN_DARI_SERVER" sh -s - agent 
 ```
 ```
-firewall-cmd --reload
+sudo kubectl label node [hostname_server] role=[rolenya]
+```
+
+## cek status region
+> harus dari laptop admin diregion control
+```
+ sudo k3s kubectl get nodes   
 ```
 
 
-# Install K3s using the official script
-```bash
-curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server" sh -s - --flannel-backend none --token 12345
-```
-
-# Enable and start K3s
-```bash
-sudo systemctl enable k3s
-```
-```bash
-sudo systemctl start k3s
-```
-
-# Check status
-```
-sudo systemctl status k3s
-```
-
-# Set up kubectl access
-```
-mkdir -p ~/.kube
-```
-```
-sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
-```
-```
-sudo chown $(id -u):$(id -g) ~/.kube/config
-```
-```
-export KUBECONFIG=~/.kube/config
-```
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ab9d290-21a7-49e9-95f0-5219a71236e6" />
 
 <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e86cfe67-13fc-42af-ac2c-31368890de97" />

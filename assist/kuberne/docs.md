@@ -49,3 +49,9 @@ sudo chown $(id -u):$(id -g) ~/.kube/config
 ```
 export KUBECONFIG=~/.kube/config
 ```
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/8ab9d290-21a7-49e9-95f0-5219a71236e6" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e86cfe67-13fc-42af-ac2c-31368890de97" />
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/6af15e86-fd16-4ce6-b6ed-b727dcaf326d" />
+
